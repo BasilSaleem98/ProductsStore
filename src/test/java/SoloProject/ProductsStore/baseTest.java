@@ -1,0 +1,26 @@
+package SoloProject.ProductsStore;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.BeforeMethod;
+
+public class baseTest {
+	
+    public WebDriver driver;
+	
+	@BeforeMethod
+    public void setup() {
+    //	WebDriverManager.chromedriver().setup();
+    //	driver = new ChromeDriver();
+    	driver = new EdgeDriver(); //used edge browser
+    	
+        driver.manage().window().maximize();
+        driver.get("https://www.demoblaze.com/index.html");
+    }
+
+    //@AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+	
+}

@@ -15,7 +15,7 @@ public class baseTest {
     	driver = new EdgeDriver(); //used edge browser
     	
         driver.manage().window().maximize();
-        driver.get("https://www.demoblaze.com/index.html");
+        driver.get("https://www.demoblaze.com/");
     }
 
     //@AfterMethod

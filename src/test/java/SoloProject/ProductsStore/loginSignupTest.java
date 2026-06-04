@@ -34,16 +34,7 @@ public class loginSignupTest extends baseTest {
 			Assert.assertEquals(singup.getAlertSignupIssue(), "This user already exist.", " Your signup must not success. ");
 		}
 	
-										//TC_CART_001 Delete Item in cart page
-		@Test	
-		public void removeItemFromCart() {
-		
-			
-			
-			
-			
-			
-		}
+
 		
 		
 		

@@ -5,8 +5,9 @@
     <classes>
       <class name="SoloProject.ProductsStore.cartTest">
         <methods>
-          <include name="placeOrderFinal"/>
+          <include name="addItemToCart"/>
           <include name="setup"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- SoloProject.ProductsStore.cartTest -->
     </classes>

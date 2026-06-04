@@ -30,14 +30,14 @@ public class productsStorePage {
     public productsStorePage(WebDriver driver) {
         this.driver = driver;
     }
-    
+	//click on samsung galaxy S6
     public void clickOnSamGalS6Product() {
     	JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("const elements = document.getElementsByClassName('adsbygoogle adsbygoogle-noablate'); while (elements.length > 0) elements[0].remove();");
 		js.executeScript("window.scrollBy(0, 300);");
     	driver.findElement(samGalS6).click();
 	}
-
+	//add samsung galaxy S6 on cart
     public void addsamGalS6ToCart() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
@@ -45,11 +45,11 @@ public class productsStorePage {
     	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
     	alertItemAdded.accept();
 	}
-    
-    public void gobackToProducts() {
+	//go back to home screen
+    public void goBackToProducts() {
     	driver.findElement(productPage).click();
 	}
-    
+	//click on samsung galaxy S7
     public void clickOnSamGalS7Product() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -58,7 +58,7 @@ public class productsStorePage {
     	WebElement clcikOnSamGaS7 = wait.until(ExpectedConditions.elementToBeClickable(samGalS7));
 		clcikOnSamGaS7.click();
 	}
-
+    //add samsung galaxy S7 on cart
     public void addSamGalS7ToCart() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
@@ -66,11 +66,11 @@ public class productsStorePage {
     	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
     	alertItemAdded.accept();
 	}
-    
+    //all action to add items to cart
     public void addTheItemsToCart() {
     	clickOnSamGalS6Product();
     	addsamGalS6ToCart();
-    	gobackToProducts();
+    	goBackToProducts();
     	clickOnSamGalS7Product();
     	addSamGalS7ToCart();
 	}

@@ -12,8 +12,7 @@ public class cartTest extends baseTest {
 		loginSignupPage login = new loginSignupPage (driver);
 		productsStorePage product = new productsStorePage(driver);
 		cartPage cart = new cartPage(driver);
-		
-		driver.get("https://www.demoblaze.com/index.html");
+		//take values from TestData to perform thier method (login)
 		login.validLogin(testData.loginUsername, testData.loginPassword);
 		Thread.sleep(2000);
 		product.addTheItemsToCart();
@@ -26,10 +25,11 @@ public class cartTest extends baseTest {
 		public void placeOrderFinal() throws InterruptedException {
 			loginSignupPage login = new loginSignupPage (driver);
 			cartPage cart = new cartPage(driver);
-			driver.get("https://www.demoblaze.com/index.html");
+			//take values from TestData to perform thier method (login)
 			login.validLogin(testData.loginUsername, testData.loginPassword);
 			Thread.sleep(2000);
 			cart.clickCartTopBar();
+			//take values from TestData to perform thier method (payment)
 			cart.finshOrder(testData.name, testData.country, testData.city, testData.creditCard, testData.month, testData.year);
 			Assert.assertEquals(cart.getSuccessMessagePayment(), "Thank you for your purchase!", "Your Payment not success ");
 		}

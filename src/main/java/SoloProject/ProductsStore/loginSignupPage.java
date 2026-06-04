@@ -129,17 +129,17 @@ public class loginSignupPage {
 	    public void clickSignupBtn() {
 	    	driver.findElement(SignupButton).click();
 		}
-		//all action to signup
-	    public void invalidSignup(String username, String password) {
-			clickSignupTopBar();
-			enterUsernameSignup(username);
-			enterPasswordSignup(password);
-			clickSignupBtn();
-		}
-	 // to verify signup not sucsses cuz enter used username
-	 		public String getAlertSignupIssue() {
-	 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	 			Alert alertIncorrectSignup = wait.until(ExpectedConditions.alertIsPresent());
-	 			return alertIncorrectSignup.getText();
-	 		}
+	//all action to signup
+	public void invalidSignup(String username, String password) {
+		clickSignupTopBar();
+		enterUsernameSignup(username);
+		enterPasswordSignup(password);
+		clickSignupBtn();
+	}
+	 // to verify signup not sucsses cuz entered used username
+	 public String getAlertSignupIssue() {
+	 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	 	Alert alertIncorrectSignup = wait.until(ExpectedConditions.alertIsPresent());
+	 	return alertIncorrectSignup.getText();
+	 	}
 }

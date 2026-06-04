@@ -29,6 +29,8 @@ public class cartPage {
 		By month = By.xpath("//input[@id='month']");
 		By year = By.xpath("//input[@id='year']");
 		By purchase = By.xpath("//button[normalize-space()='Purchase']");
+		By ok = By.xpath("//button[normalize-space()='OK']");
+
 		
 		// locator for payment success
 		By successMessage = By.xpath("//h2[normalize-space()='Thank you for your purchase!']");
@@ -41,12 +43,13 @@ public class cartPage {
 	    }
 		
 							//TC_CART_001 add items and verify the total price match
+	    //to navigate to cart page
 	    public void clickCartTopBar() {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			WebElement cartBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(cartTopBar)));
 			cartBtn.click();
 		}
-	    
+	    //to verify total price match
 		public String getTotalPrice() {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			WebElement totPrice = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(totalPrice)));
@@ -109,10 +112,17 @@ public class cartPage {
 		}
 	    
 		//click on purchase
-		public void clickpurchase() {
+		public void clickPurchase() {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			WebElement purchaseBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(purchase)));
 			purchaseBtn.click();
+		}
+		
+		//click on ok to confiorm
+		public void clickOk() {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement okBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(ok)));
+			okBtn.click();
 		}
 	    
 	  //to verify that payment success
@@ -131,8 +141,8 @@ public class cartPage {
 	    	enterCreditCard(cridit);
 	    	enterMonth(criditMonth);
 	    	enterYear(criditYear);
-	    	clickpurchase();
+	    	clickPurchase();
+	    	clickOk();
 		}
 	    
-		
 }

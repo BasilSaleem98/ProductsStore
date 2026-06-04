@@ -11,8 +11,6 @@ public class baseTest {
 	
 	@BeforeMethod
     public void setup() {
-    //	WebDriverManager.chromedriver().setup();
-    //	driver = new ChromeDriver();
     	driver = new EdgeDriver(); //used edge browser
     	
         driver.manage().window().maximize();

@@ -8,7 +8,6 @@ public class loginSignupTest extends baseTest {
 
 	@Test								//TC_Login_001 Login with valid username and password
 	public void vaildLogin() {
-		
 		loginSignupPage login = new loginSignupPage (driver);
 		login.validLogin("QualityAssurance", "QualityAssurance");
 		//to verify login is sucsses

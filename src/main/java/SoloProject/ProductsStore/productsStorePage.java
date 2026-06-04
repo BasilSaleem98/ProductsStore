@@ -1,7 +1,14 @@
 package SoloProject.ProductsStore;
 
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class productsStorePage {
 	
@@ -15,6 +22,9 @@ public class productsStorePage {
     By samGalS7 = By.xpath("//a[normalize-space()='Samsung galaxy s7']");
     // item add to cart locator
     By itemAddCart = By.xpath("//a[normalize-space()='Add to cart']");
+    // catagory sevtion locator
+    //By catagories = By.xpath("//a[@id='cat']");
+
 
 	//genral constructor
     public productsStorePage(WebDriver driver) {
@@ -22,11 +32,18 @@ public class productsStorePage {
     }
     
     public void clickOnSamGalS6Product() {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("const elements = document.getElementsByClassName('adsbygoogle adsbygoogle-noablate'); while (elements.length > 0) elements[0].remove();");
+		js.executeScript("window.scrollBy(0, 300);");
     	driver.findElement(samGalS6).click();
 	}
 
     public void addsamGalS6ToCart() {
-    	driver.findElement(itemAddCart).click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
+    	addToCartBtn.click();
+    	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
+    	alertItemAdded.accept();
 	}
     
     public void gobackToProducts() {
@@ -34,11 +51,20 @@ public class productsStorePage {
 	}
     
     public void clickOnSamGalS7Product() {
-    	driver.findElement(samGalS7).click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("const elements = document.getElementsByClassName('adsbygoogle adsbygoogle-noablate'); while (elements.length > 0) elements[0].remove();");
+		js.executeScript("window.scrollBy(0, 1000);");
+    	WebElement clcikOnSamGaS7 = wait.until(ExpectedConditions.elementToBeClickable(samGalS7));
+		clcikOnSamGaS7.click();
 	}
 
     public void addSamGalS7ToCart() {
-    	driver.findElement(itemAddCart).click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
+    	addToCartBtn.click();
+    	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
+    	alertItemAdded.accept();
 	}
     
     public void addTheItemsToCart() {

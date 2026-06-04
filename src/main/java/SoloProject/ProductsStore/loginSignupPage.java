@@ -49,7 +49,7 @@ public class loginSignupPage {
     }
     
     
-  //***********************************************TC_Login_001
+  //***********************************************TC_Login_001 Login with valid username and password
     //click on login on top bar
     public void clickLoginTopBar() {
     	driver.findElement(loginTopBar).click();
@@ -57,16 +57,14 @@ public class loginSignupPage {
     //enter username
     public void enterUsernameLogin(String username) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement usernameLoginField = wait.until(ExpectedConditions.elementToBeClickable(usernameLogin)
-            );
+    	WebElement usernameLoginField = wait.until(ExpectedConditions.elementToBeClickable(usernameLogin));
     	usernameLoginField.clear();
     	usernameLoginField.sendKeys(username);
 	}
     //eneter passewrd
     public void enterPasswordLogin(String password) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement passwordLoginField = wait.until(ExpectedConditions.elementToBeClickable(passwordLogin)
-            );
+    	WebElement passwordLoginField = wait.until(ExpectedConditions.elementToBeClickable(passwordLogin));
     	passwordLoginField.clear();
     	passwordLoginField.sendKeys(password);
 	}
@@ -79,8 +77,7 @@ public class loginSignupPage {
     // to verify login is sucsses
 	public String getUsernameWelcome() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement usernameWelcomeLogin = wait.until(ExpectedConditions.elementToBeClickable(usernameWelcome)
-            );
+    	WebElement usernameWelcomeLogin = wait.until(ExpectedConditions.elementToBeClickable(usernameWelcome));
 		return usernameWelcomeLogin.getText();
 	}
 	
@@ -116,16 +113,14 @@ public class loginSignupPage {
 	    //enter username
 	    public void enterUsernameSignup(String username) {
 	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    	WebElement usernameLoginField = wait.until(ExpectedConditions.elementToBeClickable(usernameSignup)
-	            );
+	    	WebElement usernameLoginField = wait.until(ExpectedConditions.elementToBeClickable(usernameSignup));
 	    	usernameLoginField.clear();
 	    	usernameLoginField.sendKeys(username);
 		}
 	    //eneter passewrd
 	    public void enterPasswordSignup(String password) {
 	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    	WebElement passwordLoginField = wait.until(ExpectedConditions.elementToBeClickable(passwordSignup)
-	            );
+	    	WebElement passwordLoginField = wait.until(ExpectedConditions.elementToBeClickable(passwordSignup));
 	    	passwordLoginField.clear();
 	    	passwordLoginField.sendKeys(password);
 		}

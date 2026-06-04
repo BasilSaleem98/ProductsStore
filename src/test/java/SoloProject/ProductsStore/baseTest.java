@@ -2,6 +2,7 @@ package SoloProject.ProductsStore;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class baseTest {
@@ -18,7 +19,7 @@ public class baseTest {
         driver.get("https://www.demoblaze.com/");
     }
 
-    //@AfterMethod
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }

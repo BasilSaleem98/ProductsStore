@@ -5,7 +5,7 @@
     <classes>
       <class name="SoloProject.ProductsStore.cartTest">
         <methods>
-          <include name="addItemToCart"/>
+          <include name="placeOrderFinal"/>
           <include name="setup"/>
         </methods>
       </class> <!-- SoloProject.ProductsStore.cartTest -->

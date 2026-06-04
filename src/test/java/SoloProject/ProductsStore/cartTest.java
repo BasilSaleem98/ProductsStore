@@ -21,6 +21,17 @@ public class cartTest extends baseTest {
 		Assert.assertEquals(cart.getTotalPrice(), "1160", " The total price not match ");
 	}
 	
-	
+						//TC_CART_002 Place order and verify place order is success
+		@Test	
+		public void placeOrderFinal() throws InterruptedException {
+			loginSignupPage login = new loginSignupPage (driver);
+			cartPage cart = new cartPage(driver);
+			driver.get("https://www.demoblaze.com/index.html");
+			login.validLogin(testData.loginUsername, testData.loginPassword);
+			Thread.sleep(2000);
+			cart.clickCartTopBar();
+			cart.finshOrder(testData.name, testData.country, testData.city, testData.creditCard, testData.month, testData.year);
+			Assert.assertEquals(cart.getSuccessMessagePayment(), "Thank you for your purchase!", "Your Payment not success ");
+		}
 
 }

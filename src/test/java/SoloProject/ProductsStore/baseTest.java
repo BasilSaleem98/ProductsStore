@@ -17,7 +17,7 @@ public class baseTest {
         driver.get("https://www.demoblaze.com/");
     }
 
-    @AfterMethod
+  //  @AfterMethod
     public void tearDown() {
         driver.quit();
     }

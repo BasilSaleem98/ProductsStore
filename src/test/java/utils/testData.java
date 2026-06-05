@@ -4,6 +4,7 @@ public class testData {
 	 // Login
     public static final String loginUsername    = "QualityAssurance";
     public static final String loginPassword = "QualityAssurance";
+    public static final String contactEmail = "qa@test.com";
 
     // Payment
     public static final String name         = "QA Tester";

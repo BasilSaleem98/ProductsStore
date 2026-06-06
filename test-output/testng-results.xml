@@ -2,19 +2,19 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-06-05T23:45:21 EEST" name="Default suite" finished-at="2026-06-05T23:45:30 EEST" duration-ms="8364">
+  <suite started-at="2026-06-06T11:00:37 EEST" name="Default suite" finished-at="2026-06-06T11:00:43 EEST" duration-ms="5888">
     <groups>
     </groups>
-    <test started-at="2026-06-05T23:45:21 EEST" name="Default test" finished-at="2026-06-05T23:45:30 EEST" duration-ms="8364">
+    <test started-at="2026-06-06T11:00:37 EEST" name="Default test" finished-at="2026-06-06T11:00:43 EEST" duration-ms="5888">
       <class name="SoloProject.ProductsStore.homeTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:SoloProject.ProductsStore.homeTest@7c6908d7]" started-at="2026-06-05T23:45:21 EEST" name="setup" finished-at="2026-06-05T23:45:29 EEST" duration-ms="7132" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:SoloProject.ProductsStore.homeTest@3c9754d8]" started-at="2026-06-06T11:00:37 EEST" name="setup" finished-at="2026-06-06T11:00:42 EEST" duration-ms="4568" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="scrollVerifyThatFooterIsVisable()[pri:0, instance:SoloProject.ProductsStore.homeTest@7c6908d7]" started-at="2026-06-05T23:45:29 EEST" name="scrollVerifyThatFooterIsVisable" finished-at="2026-06-05T23:45:30 EEST" duration-ms="1182" status="PASS">
+        <test-method signature="switchToNextPage()[pri:0, instance:SoloProject.ProductsStore.homeTest@3c9754d8]" started-at="2026-06-06T11:00:42 EEST" name="switchToNextPage" finished-at="2026-06-06T11:00:43 EEST" duration-ms="1267" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- scrollVerifyThatFooterIsVisable -->
+        </test-method> <!-- switchToNextPage -->
       </class> <!-- SoloProject.ProductsStore.homeTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

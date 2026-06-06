@@ -31,7 +31,7 @@ public class homePage {
     //locator for apple monitor price
     By appleMonitor24Price = By.xpath("//h5[normalize-space()='$400']");
     //*****************************************************************************
-    												//locators for contact us TC
+    												//locators for contact us TC and about us TC
     //locator for contact button in topbar
     By contactBtn = By.xpath("//a[normalize-space()='Contact']");
     //locator for verify that "New meesage" opend
@@ -44,8 +44,14 @@ public class homePage {
     By contactMessage = By.xpath("//textarea[@id='message-text']");
     //locator for send message button
     By sendMessageBtn = By.xpath("//button[normalize-space()='Send message']");
-    //variables
-    String getMessageIsSend;
+    //********************************//
+    //locator "about us" button in topbar
+    By aboutUsTopBar = By.xpath("//a[normalize-space()='About us']");
+    //locator "about us" frame is displayed
+    By aboutUsFrameVis = By.xpath("//h5[@id='videoModalLabel']");
+    //locator "about us" frame is displayed
+    By aboutUsVidVis = By.xpath("//video[@id='example-video_html5_api']");
+  
 //*********************************************************************
     
   //genral constructor
@@ -60,7 +66,7 @@ public class homePage {
     	js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 	}
     //verify that "about us" in down bar visible 
-    public boolean isAboutUsVis() {
+    public boolean isAboutUsDownVis() {
 		return driver.findElement(aboutUsDownBar).isDisplayed();
 	}
     //verify that "about us" paragraph in down bar visible 
@@ -83,14 +89,14 @@ public class homePage {
     //vrify that apple monitor is visible 
     public String getAppleMonitor24Vis() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till apple monitor is visible 
-		WebElement apple = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(appleMonitor24)));
+		WebElement apple = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(appleMonitor24)));
 		return apple.getText();
 		
 	}
   //vrify that apple monitor price is visible 
     public String getAppleMonitor24PriceVis() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till apple monitor price is visible 
-		WebElement apple = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(appleMonitor24Price)));
+		WebElement apple = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(appleMonitor24Price)));
 		return apple.getText();
 	}
 	//////////////////////////////////////////////////TC_Contact_Us
@@ -103,25 +109,28 @@ public class homePage {
     //verify that contact frame message is visible
     public boolean isNewMessageFrameVis() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till conatact frame is visible 
-		WebElement newMessFrame = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(contactFrameMess)));
+		WebElement newMessFrame = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(contactFrameMess)));
 		return newMessFrame.isDisplayed();		
 	}
     //enter contact email
     public void enterContactEmail(String email) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till email field is visible 
 		WebElement enterContactEmail = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(contactEmail)));
+		enterContactEmail.clear();
 		enterContactEmail.sendKeys(email);
 	}
     //enter contact name
     public void enterContactName(String name) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till name field visible 
 		WebElement enterContactName = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(contactName)));
+		enterContactName.clear();
 		enterContactName.sendKeys(name);
 	}
     //enter ur message
     public void enterContactMess(String message) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till message field is visible 
 		WebElement enterContactMess = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(contactMessage)));
+		enterContactMess.clear();
 		enterContactMess.sendKeys(message);
 	}
     //send contact message (click on send message buttton)
@@ -135,16 +144,35 @@ public class homePage {
 	public String getAlertMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	Alert alertMessSend = wait.until(ExpectedConditions.alertIsPresent());
-    	getMessageIsSend= alertMessSend.getText();
-    	alertMessSend.accept();
-    	return getMessageIsSend;
+    	return alertMessSend.getText();
 	}
-    
+    // to fill contact form
 	public void contactForm(String email, String name, String message) {
 		enterContactEmail(email);
 		enterContactName(name);
 		enterContactMess(message);
 		clickSendMessage();
 	}
+	//////////////////////////////////////////////////TC_About_Us
+    //click on "about us" button
+	public void clickOnAboutUSTopBar() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till "about us" button is visible 
+		WebElement aboutUsBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(aboutUsTopBar)));
+		aboutUsBtn.click();
+	}
+    //verify that "about us" frame is visible
+    public boolean isAboutUsTopVis() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till contact frame is visible 
+		WebElement aboutUsFrame = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(aboutUsFrameVis)));
+		return aboutUsFrame.isDisplayed();		
+	}
+    //verify that video in "about us" frame is visible
+    public boolean isVidAboutUsTopVis() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait till contact frame is visible 
+		WebElement aboutUsVidFrame = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(aboutUsVidVis)));
+		return aboutUsVidFrame.isDisplayed();		
+	}
+	
+	
     
 }

@@ -14,6 +14,8 @@ public class cartTest extends baseTest {
 		cartPage cart = new cartPage(driver);
 		//take values from TestData to perform thier method (login)
 		login.validLogin(testData.loginUsername, testData.loginPassword);
+		//verify loged in successfully
+		Assert.assertEquals(login.getUsernameWelcome(), "Welcome QualityAssurance", " You didnt login successfully. ");
 		product.addTheItemsToCart(); 
 		//verify that first item is Samsung galaxy s6
 		Assert.assertEquals(product.getSGS6Name(), "Samsung galaxy s6", " The item is not Samsung galaxy s6 ");
@@ -26,11 +28,15 @@ public class cartTest extends baseTest {
 		cart.clickCartTopBar();
 		//verify that total price for both items is 1160
 		Assert.assertEquals(cart.getTotalPrice(), "1160", " The total price not match ");
+		System.out.print("the log in success and the welcoming is : " + login.getUsernameWelcome() + " . " + "\n"
+				+ " the first item is: " + product.getSGS6Name() + " and the price is: " + product.getSGS6Price() + "\n"
+				+ " the second item is: " + product.getSGS7Name() + " and the price is: " + product.getSGS7Price() + "\n"
+				+ " the total of ordered items is: " + cart.getTotalPrice() + " . "+ "\n");
 	}
 	
 						//TC_CART_002 Place order and verify place order is success
 		@Test	
-		public void placeOrderFinal() {
+		public void placeOrderFinal() throws InterruptedException {
 			loginSignupPage login = new loginSignupPage (driver);
 			cartPage cart = new cartPage(driver);
 			//take values from TestData to perform thier method (login)
@@ -39,6 +45,7 @@ public class cartTest extends baseTest {
 			//take values from TestData to perform thier method (payment)
 			cart.finshOrder(testData.name, testData.country, testData.city, testData.creditCard, testData.month, testData.year);
 			Assert.assertEquals(cart.getSuccessMessagePayment(), "Thank you for your purchase!", "Your Payment not success ");
+			System.out.println("thanks for the ordering from our store and " + cart.getSuccessMessagePayment() + " . " );
 		}
 
 }

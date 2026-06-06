@@ -3,8 +3,10 @@ package SoloProject.ProductsStore;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,11 +17,14 @@ public class cartPage {
 	
 								//locators for cart TCs (dont forget that items locators are in product store page)
 		// cart button in TopBar locator
-		By cartTopBar = By.xpath("//a[@id='cartur']");
+		By cartTopBar = By.xpath("//a[normalize-space()='Cart']");
 		// total price items locator
 		By totalPrice = By.xpath("//h3[@id='totalp']");
-		// cart button in TopBar locator
+		// place order button locator
 		By placeOrderBtn = By.xpath("//button[normalize-space()='Place Order']");
+		// second item locator to be visible
+		By secondItemInCart = By.xpath("//td[normalize-space()='Samsung galaxy s7']");
+		
 		
 		// locators for payment fields
 		By name = By.xpath("//input[@id='name']");
@@ -44,11 +49,10 @@ public class cartPage {
 		
 							//TC_CART_001 add items and verify the total price match
 	    //to navigate to cart page
-	    public void clickCartTopBar() {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement cartBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(cartTopBar)));
-			cartBtn.click();
-		}
+	    public void clickCartTopBar() throws InterruptedException {
+	    	Thread.sleep(500);
+	    	driver.findElement(cartTopBar).click();
+	    }
 	    //to verify total price match
 		public String getTotalPrice() {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -60,6 +64,7 @@ public class cartPage {
 		//click on place order
 		public void clickPlaceOrder() {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement secItemVis = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(secondItemInCart)));
 			WebElement pOrderBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(placeOrderBtn)));
 			pOrderBtn.click();
 		}
@@ -119,21 +124,21 @@ public class cartPage {
 		}
 		
 		//click on ok to confiorm
-		public void clickOk() {
+		public void clickOk() throws InterruptedException {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement okBtn = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(ok)));
+			WebElement okBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
 			okBtn.click();
 		}
 	    
 	  //to verify that payment success
 	    public String getSuccessMessagePayment() {
 	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    	WebElement paySuccess = wait.until(ExpectedConditions.elementToBeClickable(successMessage));
-	    	return paySuccess.getText();
+	    	WebElement thanksMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
+	    	return thanksMessage.getText();
 		}
 		
 		//all action to place order
-	    public void finshOrder(String customerName, String customerCountry, String customerCity, String cridit, String criditMonth,String criditYear ) {
+	    public void finshOrder(String customerName, String customerCountry, String customerCity, String cridit, String criditMonth,String criditYear ) throws InterruptedException {
 	    	clickPlaceOrder();
 	    	enterName(customerName);
 	    	enterCountry(customerCountry);

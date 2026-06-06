@@ -3,12 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="SoloProject.ProductsStore.homeTest">
+      <class name="SoloProject.ProductsStore.cartTest">
         <methods>
-          <include name="contactUs"/>
+          <include name="placeOrderFinal"/>
+          <include name="addItemToCart"/>
           <include name="setup"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- SoloProject.ProductsStore.homeTest -->
+      </class> <!-- SoloProject.ProductsStore.cartTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

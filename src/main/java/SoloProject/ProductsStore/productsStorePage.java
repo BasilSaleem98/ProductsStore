@@ -59,13 +59,12 @@ public class productsStorePage {
     	samGS6Price = getFullTxt.split(" ")[0]; //take first value which is price
 	}
 	//add samsung galaxy S6 on cart
-    public void addsamGalS6ToCart() {
+    public void addItemsToCart() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
     	addToCartBtn.click();
     	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
     	alertItemAdded.accept();
-    	driver.findElement(productPage).click();
 	}
 	//go back to home screen
     public void goBackToProducts() throws InterruptedException {
@@ -87,21 +86,21 @@ public class productsStorePage {
         String getFullTxt = driver.findElement(samGalS7Price).getText();       //get name and price of samsung galaxy S7
     	samGS7Price =  getFullTxt.split(" ")[0];  //take first value which is price
 	}
-    //add samsung galaxy S7 on cart
-    public void addSamGalS7ToCart() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
-    	addToCartBtn.click();
-    	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
-    	alertItemAdded.accept();
-	}
+//    //add samsung galaxy S7 on cart
+//    public void addSamGalS7ToCart() {
+//    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//    	WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(itemAddCart));
+//    	addToCartBtn.click();
+//    	Alert alertItemAdded = wait.until(ExpectedConditions.alertIsPresent());
+//    	alertItemAdded.accept();
+//	}
     // actions to add items to cart
     public void addTheItemsToCart() throws InterruptedException {
     	clickOnSamGalS6Product();
-    	addsamGalS6ToCart();
+    	addItemsToCart();
     	goBackToProducts();
     	clickOnSamGalS7Product();
-    	addSamGalS7ToCart();
+    	addItemsToCart();
 	}
     //get name from SGS6
     public String getSGS6Name() {
